@@ -60,7 +60,6 @@ body {
     max-width: 1180px;
     margin: 0 auto;
 }
-
 .sc-title {
     margin-bottom: 20px;
     font-size: 36px;
@@ -70,4 +69,26 @@ body {
 
 .sc-desc {
     margin-bottom: 60px;
+}
+
+.btn-more {
+    display: inline-block;
+    height: 52px;
+    padding: 0 22px;
+    margin-top: 40px;
+    border-radius: 8px;
+    line-height: 52px;
+    font-weight: 700;
+    background-color: #f3f4f5;
+}
+
+body ::-webkit-scrollbar {
+    width: 5px; height: 5px;
+}
+body ::-webkit-scrollbar-thumb {
+    border-radius: 2.5px;
+    background-color: rgba(0,0,0,.15);
+}
+body ::-webkit-scrollbar-track {
+    background-color: transparent;
 }

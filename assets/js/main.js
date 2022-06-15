@@ -18,6 +18,41 @@ $(function(){
         $(this).parent().siblings().first().children().addClass('active');
     }) // 소메뉴 hover
 
+    $(document).scroll(function(){
+        var scrollT = $(this).scrollTop(); // 현재 스크롤 위치
+        var slideT = $(this).find('.sc-mainSlide').offset().top; // Top에서 메인슬라이드 섹션 Top까지 위치
+        var slideH = $(this).find('.sc-mainSlide').height(); // 메인슬라이드 섹션 높이
+        var videoT = $(this).find('.sc-video').offset().top; // Top에서 비디오 섹션 Top까지 위치
+        var videoH = $(this).find('.sc-video').innerHeight(); // 비디오 섹션 높이(패딩포함)
+    
+        if (scrollT >= videoT + videoH) { // 현재 스크롤이 비디오 섹션 끝부분까지의 위치보다 크다면
+            $('.header').removeClass('fix') 
+        } else if (scrollT < slideT + slideH) { // 현재 스크롤이 메인 슬라이드 섹션 끝부분까지의 위치보다 작다면
+            $('.header').addClass('fix')
+        }
+    }) // 스크롤 이벤트
+    
+    var last_scroll = 0;
+    $(window).scroll(function () {
+        if (!$('.header').hasClass('fix')) { // header 영역에 fix 클래스가 없을 때만 적용
+            var curr_scroll = $(window).scrollTop();
+            console.log(curr_scroll);
+            if (curr_scroll > last_scroll || $(window).scrollTop() == 0) {
+                $('.header').addClass('hide');
+            } else {
+                $('.header').removeClass('hide');
+            }
+            last_scroll = curr_scroll;
+        }
+    }); // 마우스 휠 조작 시 헤더영역 숨김 유무
+    
+    window.onload = function(){
+        setTimeout (function(){
+            scrollTo(0,0)
+        }, 1)
+    } // 새로고침 시 스크롤 top
+    
+
     var numArray = []; // 5개의 난수를 넣어 줄 배열 생성
     var slideArray = []; // 5개의 슬라이드를 넣어 줄 슬라이드 배열 생성
     $('.container .sc-mainSlide .swiper-wrapper .swiper-slide').each(function(){
@@ -52,5 +87,34 @@ $(function(){
         var storyAreaClone = $('.story-area').clone()
         storyAreaClone.addClass('dup');
         $('.slide-story').append(storyAreaClone);
+
+        var fontListClone = $('.font-area').clone();
+        fontListClone.addClass('dup');
+        $('.slide-font').append(fontListClone);
     }) // story 슬라이드
+
+    $('.sc-video .video-wrap').hover(function(){
+        $(this).children('a').toggleClass('hide');
+    }) // video 영역 hover이벤트 시 컨트롤러 숨김 유무
+
+    $('.sc-video .video-wrap .btn-control').click(function(e){
+        e.preventDefault();
+        if($(this).hasClass('pause')) {
+            $(this).siblings().get(0).pause();
+            $(this).children().text('재생');
+        } else {
+            $(this).siblings().get(0).play();
+            $(this).children().text('정지');
+        }
+        $(this).toggleClass('pause play');
+    }) // video 컨트롤러 클릭 시 video 정지/재생 및 정지/재생버튼 변경
+
+    $('.sc-news .link-news').hover(function(){
+        $(this).toggleClass('over');
+        $(this).children().find('img').toggleClass('over');
+    }) // news 리스트 hover
+
+    $('.btn-related').click(function(){
+        $(this).siblings().toggleClass('hide')
+    }) // footer 관련 사이트 버튼 클릭 시 hide toggle
 })
