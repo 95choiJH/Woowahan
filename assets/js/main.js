@@ -15,7 +15,7 @@ $(function(){
         $(this).addClass('active');
     }, function(){
         $('.gnb-area .submenu-area .link-submenu').removeClass('active');
-        $(this).parent().siblings().first().children().addClass('active');
+        $('.gnb-area .submenu-list:first-child .link-submenu').addClass('active');
     }) // 소메뉴 hover
 
     $(document).scroll(function(){
@@ -37,9 +37,9 @@ $(function(){
         if (!$('.header').hasClass('fix')) { // header 영역에 fix 클래스가 없을 때만 적용
             var curr_scroll = $(window).scrollTop();
             console.log(curr_scroll);
-            if (curr_scroll > last_scroll || $(window).scrollTop() == 0) {
+            if (curr_scroll > last_scroll || $(window).scrollTop() == 0) { // 마우스 내릴 때
                 $('.header').addClass('hide');
-            } else {
+            } else { // 마우스 올릴 때
                 $('.header').removeClass('hide');
             }
             last_scroll = curr_scroll;
@@ -82,16 +82,31 @@ $(function(){
     }); // 메인슬라이드
     
     $(document).ready(function(){
+
         var storyListClone = $('.story-area').children().clone();
         $('.story-area').append(storyListClone);
         var storyAreaClone = $('.story-area').clone()
         storyAreaClone.addClass('dup');
         $('.slide-story').append(storyAreaClone);
+        // story 슬라이드
+
+        $('.sc-story .link-story').hover(function(){
+            $(this).children().find('img').toggleClass('over');
+        }) // story hover이벤트 이미지 scale
 
         var fontListClone = $('.font-area').clone();
         fontListClone.addClass('dup');
         $('.slide-font').append(fontListClone);
-    }) // story 슬라이드
+        // font 슬라이드
+    })
+
+    $('.story-area').hover(function(){
+        setTimeout(function(){
+            $('.slide-story').addClass('pause')
+        }, 2000)
+    }, function(){
+        $('.slide-story').removeClass('pause')
+    })
 
     $('.sc-video .video-wrap').hover(function(){
         $(this).children('a').toggleClass('hide');
@@ -115,6 +130,7 @@ $(function(){
     }) // news 리스트 hover
 
     $('.btn-related').click(function(){
-        $(this).siblings().toggleClass('hide')
+        $(this).siblings('.site-area').toggleClass('hide');
+        $(this).siblings('.ic-arrow').toggleClass('down up');
     }) // footer 관련 사이트 버튼 클릭 시 hide toggle
 })

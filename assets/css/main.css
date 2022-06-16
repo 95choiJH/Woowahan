@@ -22,61 +22,42 @@
 .sc-mainSlide .swiper-wrapper .swiper-slide .link-slide {
     position: relative;
     width: 100%; height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
-.sc-mainSlide .link-slide.slide-intro01 {
-    background: url("../images/slide_intro01.jpg");
+.sc-mainSlide .link-slide .img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; height: 100%;
+    overflow: hidden;
 }
-.sc-mainSlide .link-slide.slide-intro02 {
-    background: url("../images/slide_intro02.jpg");
+.sc-mainSlide .swiper-slide-active .link-slide .img-box img {
+    filter: brightness(.9);
+    object-fit: cover;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.36,.11,.27,1.14)
 }
-.sc-mainSlide .link-slide.slide-intro03 {
-    background: url("../images/slide_intro03.jpg");
+.sc-mainSlide .swiper-slide-active .link-slide.slide-more01 .img-box img {
+    filter: none;
+}
+.swiper-slide-active .img-box.left img {
+    animation: aniLeft 3s linear;
+}
+.swiper-slide-active .img-box.right img {
+    animation: aniRight 3s linear;
+}
+.swiper-slide-active .img-box.up img {
+    animation: aniUp 3s linear;
+}
+.swiper-slide-active .img-box.down img {
+    animation: aniDown 3s linear;
+}
+.swiper-slide-active .img-box.small img {
+    width: 884px; height: 1250px;
+    animation: aniSmall 3s linear;
 }
 .sc-mainSlide .link-slide.slide-intro04 video{
     width: 100%; height: 100%;
     object-fit: cover;
-}
-.sc-mainSlide .link-slide.slide-service01 {
-    background: url("../images/slide_service01.jpg");
-}
-.sc-mainSlide .link-slide.slide-service02 {
-    background: url("../images/slide_service02.jpg");
-}
-.sc-mainSlide .link-slide.slide-service03 {
-    background: url("../images/slide_service03.jpg");
-}
-.sc-mainSlide .link-slide.slide-service04 {
-    background: url("../images/slide_service04.jpg");
-}
-.sc-mainSlide .link-slide.slide-service05 {
-    background: url("../images/slide_service05.jpg");
-}
-.sc-mainSlide .link-slide.slide-together01 {
-    background: url("../images/slide_together01.jpg");
-}
-.sc-mainSlide .link-slide.slide-together02 {
-    background: url("../images/slide_together02.jpg");
-}
-.sc-mainSlide .link-slide.slide-together03 {
-    background: url("../images/slide_together03.jpg");
-}
-.sc-mainSlide .link-slide.slide-news01 {
-    background: url("../images/slide_news01.jpg");
-}
-.sc-mainSlide .link-slide.slide-font01 {
-    background: url("../images/slide_font01.jpg");
-}
-.sc-mainSlide .link-slide.slide-font02 {
-    background: url("../images/slide_font02.jpg");
-}
-.sc-mainSlide .link-slide.slide-baemin01 {
-    background: url("../images/slide_baemin01.jpg");
-}
-.sc-mainSlide .link-slide.slide-more01 {
-    background: url("../images/slide_more01.jpg");
 }
 .sc-mainSlide .link-slide .txt-box {
     position: absolute;
@@ -104,6 +85,47 @@
     font-size: 14px;
 }
 
+@keyframes aniLeft {
+    from {
+        transform: scale(1.2) translateX(5%)
+    }
+    to {
+        transform: scale(1.2) translateX(-1%);
+    }
+}
+@keyframes aniRight {
+    from {
+        transform: scale(1.1) translateX(-5%)
+    }
+    to {
+        transform: scale(1.1) translateX(1%);
+    }
+}
+@keyframes aniUp {
+    from {
+        transform: scale(1.1) translateY(5%)
+    }
+    to {
+        transform: scale(1.1) translateY(-1%);
+    }
+}
+@keyframes aniDown {
+    from {
+        transform: scale(1.1) translateY(-5%)
+    }
+    to {
+        transform: scale(1.1) translateY(1%);
+    }
+}
+@keyframes aniSmall {
+    from {
+        transform: scale(0.7)
+    }
+    to {
+        transform: scale(0.6)
+    }
+}
+
 .container .sc-story {
     padding-top: 160px;
     overflow: hidden;
@@ -114,16 +136,19 @@
 .sc-story .story-area {
     display: inline-flex;
     animation: storySlide 190s linear infinite;
+    animation-play-state: running;
 }
 .sc-story .story-area.dup {
     animation: storySlideDup 190s linear infinite;
+}
+.sc-story .slide-story.pause .story-area {
+    animation-play-state: paused;
 }
 .sc-story .story-list {
     position: relative;
     width: 180px; height: 245px;
     margin: 0 8px;
     border-radius: 10px;
-    border: 1px solid rgba(0,0,0,.1);
     overflow: hidden;
 }
 .sc-story .story-list:nth-child(odd) {
@@ -136,56 +161,39 @@
     background-size: cover;
     background-position: center;
 }
-.sc-story .img-story01 {
-    background: url(../images/story01.png);
+.sc-story .story-list .link-story::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.1);
+    box-sizing: border-box;
 }
-.sc-story .img-story02 {
-    background: url(../images/story02.jpg);
+.sc-story .story-list .img-box {
+    width: 100%; height: 100%;
 }
-.sc-story .img-story03 {
-    background: url(../images/story03.png);
+.sc-story .story-list .img-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    display: block;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5));
 }
-.sc-story .img-story04 {
-    background: url(../images/story04.png);
+.sc-story .story-list img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: .5s ease-in-out;
 }
-.sc-story .img-story05 {
-    background: url(../images/story05.jpg);
-}
-.sc-story .img-story06 {
-    background: url(../images/story06.png);
-}
-.sc-story .img-story07 {
-    background: url(../images/story07.jpg);
-}
-.sc-story .img-story08 {
-    background: url(../images/story08.jpg);
-}
-.sc-story .img-story09 {
-    background: url(../images/story09.jpg);
-}
-.sc-story .img-story10 {
-    background: url(../images/story10.jpg);
-}
-.sc-story .img-story11 {
-    background: url(../images/story11.png);
-}
-.sc-story .img-story12 {
-    background: url(../images/story12.png);
-}
-.sc-story .img-story13 {
-    background: url(../images/story13.jpg);
-}
-.sc-story .img-story14 {
-    background: url(../images/story14.png);
-}
-.sc-story .img-story15 {
-    background: url(../images/story15.jpg);
+.sc-story .story-list img.over {
+    transform: scale(1.1);
 }
 .sc-story .story-title {
     position: absolute;
     bottom: 16px; left: 12px;
     display: -webkit-box;
-    height: 52px;
+    max-height: 52px;
     color: #fff;
     font-size: 16px;
     font-weight: 700;

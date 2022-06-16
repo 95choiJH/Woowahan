@@ -26,6 +26,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%; height: 72px;
+    z-index: 0;
 }
 .gnb-area .link-home {
     display: block;
@@ -45,7 +46,7 @@
     width: 100%; height: 72px;
 }
 .gnb-area .menu-area .menu-list {
-    height: 100%;
+    height: 72px;
 }
 .gnb-area .menu-area .link-menu {
     padding: 0 17px;
@@ -63,11 +64,12 @@
     font-weight: 700;
     color: #d6d7da;
     transition: .3s;
+    pointer-events: none;
     opacity: 0;
 }
 .gnb-area .menu-area .menu-list.over .submenu-area {
+    pointer-events: all;
     opacity: 1;
-    z-index: 2;
 }
 .gnb-area .menu-area .link-submenu {
     display: inline-block;
@@ -196,15 +198,24 @@
     font-size: 14px;
     text-align: left;
     color: #37373a;
+    cursor: pointer;
     box-sizing: border-box;
 }
-.footer .related-area .btn-related::after {
+.footer .related-area .ic-arrow {
     position: absolute;
     top: 21px; right: 16px;
     content: '';
     display: inline-block;
     width: 12px; height: 8px;
     background: url(../images/drop_down.svg) no-repeat;
+    transition: .3s ease-in-out;
+    pointer-events: none;
+}
+.footer .related-area .ic-arrow.down {
+    background: url(../images/drop_down.svg) no-repeat;
+}
+.footer .related-area .ic-arrow.up {
+    transform: rotate(-180deg);
 }
 .related-area .site-area {
     position: absolute;
