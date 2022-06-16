@@ -70,6 +70,24 @@ $(function(){
         }
     }) // 메인슬라이드 개수를 5개로 제한하며 새로고침 할 때마다 랜덤슬라이드
 
+    function fadeText() {
+        $('.swiper-slide .fade').remove(); // 초기화
+        var text = $('.swiper-slide-active').find('.fiction').text(); // 현재 활성화된 슬라이드에 페이드 할 텍스트를 text 변수에 저장 
+        text = text.split(""); // 문장을 한 글자씩 잘라서 다시 text 변수에 저장
+        $('.swiper-slide-active').find('.desc').append('<span class="fade"></span>') // 활성화 된 슬라이드에 텍스트 자리 뒤에 fade 클래스를 가진 span을 추가
+        $(text).each(function(i){ // text의 길이만큼 반복문
+            $('.swiper-slide-active').find('.fade').append('<i class="fade-txt'+i+'">'+text[i]+'</i>'); // 추가한 fade안에 text변수에 저장된 글자 하나하나를 각각 클래스를 줘서 추가
+        })
+        var i = 0; // setinterval 반복할 횟수 i를 0으로 초기화
+        setInterval(function(){
+            if(i < text.length) { // text의 길이만큼 반복
+                $('.swiper-slide-active').find('.fade-txt'+i+'').animate({opacity: "1"}); // 각각의 글자를 2초마다 opacity 1
+                i++;
+            } else {
+                return false; // setinterval 종료
+            }
+        }, 200)
+    } // 메인슬라이드 텍스트 페이드인
 
     var mainSlide = new Swiper(".sc-mainSlide", {
         pagination: {
@@ -78,10 +96,19 @@ $(function(){
         autoplay: {
             delay: 7000,
         },
-        loop: true,
+        on: {
+            slideChange: function(){
+                setTimeout(function(){
+                    fadeText();
+                },1)
+            }
+        },
+        loop: true
     }); // 메인슬라이드
     
+    
     $(document).ready(function(){
+        fadeText();
 
         var storyListClone = $('.story-area').children().clone();
         $('.story-area').append(storyListClone);

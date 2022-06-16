@@ -58,6 +58,7 @@
 .sc-mainSlide .link-slide.slide-intro04 video{
     width: 100%; height: 100%;
     object-fit: cover;
+    filter: brightness(.9);
 }
 .sc-mainSlide .link-slide .txt-box {
     position: absolute;
@@ -78,8 +79,14 @@
     line-height: 1.3em;
     letter-spacing: .06em;
 }
+.sc-mainSlide .txt-box .desc .fiction {
+    display: none;
+}
 .sc-mainSlide .txt-box .desc .fade {
     display: block;
+}
+.sc-mainSlide .txt-box .desc .fade i {
+    opacity: 0;
 }
 .sc-mainSlide .txt-box .cate {
     font-size: 14px;
