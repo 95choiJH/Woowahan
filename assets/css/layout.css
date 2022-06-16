@@ -98,7 +98,7 @@
     content: '';
     display: inline-block;
     width: 8px; height: 8px;
-    vertical-align: bottom;
+    vertical-align: middle;
     margin-left: 4px;
     background: url(../images/ic_sideMenu.svg) no-repeat;
 }
