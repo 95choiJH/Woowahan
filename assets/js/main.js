@@ -106,7 +106,7 @@ $(function(){
         }, 2000)
     }, function(){
         $('.slide-story').removeClass('pause')
-    })
+    }) // story-area에 2초 hover시 애니메이션 중지
 
     $('.sc-video .video-wrap').hover(function(){
         $(this).children('a').toggleClass('hide');
