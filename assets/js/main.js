@@ -29,7 +29,7 @@ $(function(){
     if (matchMedia("screen and (max-width: 1023px)").matches) {
         $('.gnb-area .ic-menu').click(function(){
             $(this).siblings('.open-menu-wrap').removeClass('hide');
-            $('body').addClass('none-scroll')
+            $('body').addClass('none-scroll');
         }) // 메뉴 버튼 클릭시 메뉴 활성화 및 body 스크롤 제거
 
         $('.header .close-menu').click(function(e){

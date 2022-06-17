@@ -535,48 +535,4 @@
     .sc-news .txt-box .date {
         font-size: 12px;
     }
-    .footer .menu-area {
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-    }
-    .footer .menu-area .menu-list {
-        flex: none;
-        min-width: 33.3334%;
-        white-space: nowrap;
-        margin-bottom: 40px;
-    }
-    .footer .menu-area .menu-list:last-child {
-        width: 100%;
-        padding-top: 40px;
-        margin: 6px 0 40px;
-        border-top: 1px solid #d6d7da;
-    }
-    .footer .menu-area .menu-list:last-child .submenu-area {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .footer .menu-area .menu-list:last-child .submenu-list {
-        flex-basis: 46%;
-    }
-    .footer .corp-area {
-        flex-direction: column-reverse;
-    }
-    .footer .corp-area .related-area {
-        width: 100%;
-    }
-    .footer .corp-area .related-area button {
-        width: 100%;
-        margin-bottom: 40px;
-    }
-    .corp-area .adress-area {
-        font-size: 12px;
-        margin: 0 auto;
-    }
-    .adress-area span {
-        display: block;
-        white-space: nowrap;
-    }
-    .adress-area address span+span::before {
-        display: none;
-    }
 }
