@@ -2,6 +2,7 @@ html,
 body {
     position: relative;
     height: 100%;
+    word-break: keep-all
 }
 
 body {
@@ -12,6 +13,20 @@ body {
     color: #232324;
     margin: 0;
     padding: 0;
+}
+body.none-scroll {
+    overflow: hidden;
+}
+.blur {
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background: #000;
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none;
+}
+body.none-scroll .blur {
+    opacity:  .2;
 }
 
 .swiper {
@@ -67,7 +82,7 @@ body {
     line-height: 1.5;
 }
 
-.sc-desc {
+.sc-inner {
     margin-bottom: 60px;
 }
 

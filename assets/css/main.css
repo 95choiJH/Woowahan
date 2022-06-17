@@ -238,6 +238,7 @@
 .container .sc-video {
     padding-top: 160px;
     margin-bottom: 80px;
+    overflow: hidden;
 }
 .sc-video .video-wrap {
     width: 780px;
@@ -474,5 +475,108 @@
     }
     100% {
         transform: translateX(-200%);
+    }
+}
+
+@media all and (max-width:1023px) {
+    .container {
+        padding-top: 50px;
+    }
+    .sc-mainSlide .link-slide .txt-box {
+        width: 100%;
+        font-size: 13px;
+    }
+    .sc-mainSlide .txt-box .desc {
+        padding: 35px 0;
+        font-size: 35px;
+    }
+    .sc-mainSlide .txt-box .cate {
+        font-size: 11px;
+    }
+}
+
+@media all and (max-width:767px) {
+    .container .sc-mainSlide {
+        height: 550px;
+    }
+    .sc-inner {
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+    .sc-title {
+        font-size: 30px;
+        line-height: 1.4;
+    }
+    .sc-video .video-wrap {
+        width: 100%;
+    }
+    .sc-video {
+        margin-bottom: 120px;
+    }
+    .container .sc-green {
+        padding: 0;
+    }
+    .sc-green .link-green .txt-box {
+        left: 0;
+        width: 100%;
+        transform: translate(0, -50%);
+    }
+    .sc-green .sc-title {
+        font-size: 36px;
+    }
+    .sc-news .link-news .img-box {
+        width: 100px; height: 80px;
+        margin-right: 16px;
+    }
+    .sc-news .txt-box .news-title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .sc-news .txt-box .date {
+        font-size: 12px;
+    }
+    .footer .menu-area {
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .footer .menu-area .menu-list {
+        flex: none;
+        min-width: 33.3334%;
+        white-space: nowrap;
+        margin-bottom: 40px;
+    }
+    .footer .menu-area .menu-list:last-child {
+        width: 100%;
+        padding-top: 40px;
+        margin: 6px 0 40px;
+        border-top: 1px solid #d6d7da;
+    }
+    .footer .menu-area .menu-list:last-child .submenu-area {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .footer .menu-area .menu-list:last-child .submenu-list {
+        flex-basis: 46%;
+    }
+    .footer .corp-area {
+        flex-direction: column-reverse;
+    }
+    .footer .corp-area .related-area {
+        width: 100%;
+    }
+    .footer .corp-area .related-area button {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .corp-area .adress-area {
+        font-size: 12px;
+        margin: 0 auto;
+    }
+    .adress-area span {
+        display: block;
+        white-space: nowrap;
+    }
+    .adress-area address span+span::before {
+        display: none;
     }
 }
