@@ -2,7 +2,7 @@
     padding-top: 72px;
     text-align: center;
 }
-.container .sc-mainSlide {
+.container .sc-mainSlide { /* container 삭제 */
     padding: 0;
 }
 .container .sc-mainSlide .swiper-pagination {
@@ -39,7 +39,7 @@
 .sc-mainSlide .swiper-slide-active .link-slide.slide-more01 .img-box img {
     filter: none;
 }
-.swiper-slide-active .img-box.left img {
+.swiper-slide-active .img-box.left img { /* sc-mainSlide 부모 써야함 */
     animation: aniLeft 3s linear;
 }
 .swiper-slide-active .img-box.right img {
@@ -142,33 +142,33 @@
 }
 .sc-story .story-area {
     display: inline-flex;
-    animation: storySlide 190s linear infinite;
+    animation: storySlide 70s linear infinite;
     animation-play-state: running;
 }
 .sc-story .story-area.dup {
-    animation: storySlideDup 190s linear infinite;
+    animation: storySlideDup 70s linear infinite;
 }
 .sc-story .slide-story.pause .story-area {
     animation-play-state: paused;
 }
-.sc-story .story-list {
+.sc-story .story-item {
     position: relative;
     width: 180px; height: 245px;
     margin: 0 8px;
     border-radius: 10px;
     overflow: hidden;
 }
-.sc-story .story-list:nth-child(odd) {
+.sc-story .story-item:nth-child(odd) {
     margin-top: 40px;
 }
-.sc-story .story-list .link-story {
+.sc-story .story-item .link-story {
     display: block;
     width: 100%; height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-.sc-story .story-list .link-story::after {
+.sc-story .story-item .link-story::after {
     content: '';
     position: absolute;
     top: 0; left: 0;
@@ -177,10 +177,10 @@
     border: 1px solid rgba(0,0,0,.1);
     box-sizing: border-box;
 }
-.sc-story .story-list .img-box {
+.sc-story .story-item .img-box {
     width: 100%; height: 100%;
 }
-.sc-story .story-list .img-box::after {
+.sc-story .story-item .img-box::after {
     content: '';
     position: absolute;
     top: 0; left: 0;
@@ -188,12 +188,12 @@
     width: 100%; height: 100%;
     background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.5));
 }
-.sc-story .story-list img {
+.sc-story .story-item img {
     width: 100%; height: 100%;
     object-fit: cover;
     transition: .5s ease-in-out;
 }
-.sc-story .story-list img.over {
+.sc-story .story-item img.over {
     transform: scale(1.1);
 }
 .sc-story .story-title {
@@ -255,16 +255,26 @@
     width: 100%; height: 100%;
 }
 .sc-video .video-wrap .btn-control {
+    display: block;
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 80px; height: 80px;
     opacity: 1;
 }
-.sc-video .video-wrap .btn-control.pause {
+.sc-video .video-wrap .btn-control a {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+.sc-video .video-wrap .btn-control a.hide {
+    display: none;
+}
+.sc-video .video-wrap .btn-control .btn-pause {
     background: url(../images/video_control_stop.svg) no-repeat;
 }
-.sc-video .video-wrap .btn-control.play {
+.sc-video .video-wrap .btn-control .btn-play {
     background: url(../images/video_control_play.svg) no-repeat;
 }
 .sc-video .video-wrap .btn-control.hide {
@@ -307,7 +317,7 @@
 .container .sc-news {
     padding: 120px 0;
 }
-.sc-news .news-list {
+.sc-news .news-item {
     max-width: 820px;
     margin: 0 auto;
 }
@@ -391,7 +401,7 @@
 .sc-font .font-area.dup {
     animation: fontSlideDup 40s linear infinite;
 }
-.sc-font .font-list {
+.sc-font .font-item {
     position: relative;
     width: 160px; height: 128px;
     padding: 16px;
@@ -400,53 +410,53 @@
     background: #37373a;
     box-sizing: border-box;
 }
-.sc-font .font-list::after {
+.sc-font .font-item::after {
     content: '';
     position: absolute;
     bottom: 16px; right: 16px;
     background-repeat: no-repeat;
 }
-.sc-font .font-list.hanna11::after {
+.sc-font .font-item.hanna11::after {
     width: 52px; height: 45px;
     background: url(../images/font_hanna11.svg);
 }
-.sc-font .font-list.jua::after {
+.sc-font .font-item.jua::after {
     width: 46px; height: 45px;
     background: url(../images/font_jua.svg);
 }
-.sc-font .font-list.dohyeon::after {
+.sc-font .font-item.dohyeon::after {
     width: 42px; height: 45px;
     background: url(../images/font_dohyeon.svg);
 }
-.sc-font .font-list.yeonsung::after {
+.sc-font .font-item.yeonsung::after {
     width: 33px; height: 50px;
     background: url(../images/font_yeonsung.svg);
 }
-.sc-font .font-list.kiranghaerang::after {
+.sc-font .font-item.kiranghaerang::after {
     width: 37px; height: 45px;
     background: url(../images/font_kiranghaerang.svg);
 }
-.sc-font .font-list.hannaAir::after {
+.sc-font .font-item.hannaAir::after {
     width: 42px; height: 45px;
     background: url(../images/font_hannaAir.svg);
 }
-.sc-font .font-list.hannaPro::after {
+.sc-font .font-item.hannaPro::after {
     width: 45px; height: 45px;
     background: url(../images/font_hannaPro.svg);
 }
-.sc-font .font-list.euljiro::after {
+.sc-font .font-item.euljiro::after {
     width: 45px; height: 45px;
     background: url(../images/font_euljiro.svg);
 }
-.sc-font .font-list.euljiro10year::after {
+.sc-font .font-item.euljiro10year::after {
     width: 45px; height: 47px;
     background: url(../images/font_euljiro10year.svg);
 }
-.sc-font .font-list.euljiroorae::after {
+.sc-font .font-item.euljiroorae::after {
     width: 40px; height: 47px;
     background: url(../images/font_euljiroorae.svg);
 }
-.sc-font .font-list .font-title {
+.sc-font .font-item .font-title {
     font-weight: 700;
     text-align: left;
     color: #6c6d6f;
@@ -497,11 +507,22 @@
 
 @media all and (max-width:767px) {
     .container .sc-mainSlide {
-        height: 550px;
+        height: 609px;
     }
     .sc-inner {
         padding: 0 24px;
         box-sizing: border-box;
+    }
+    .sc-mainSlide .link-slide .txt-box {
+        top: 50vh;
+        font-size: 4vw;
+    }
+    .sc-mainSlide .txt-box .desc {
+        padding: 22px 0 30px;
+        font-size: 11.5vw;
+    }
+    .sc-mainSlide .txt-box .cate {
+        font-size: 3vw;
     }
     .sc-title {
         font-size: 30px;

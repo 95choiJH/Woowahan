@@ -2,11 +2,11 @@ $(function(){
     
     if (matchMedia("screen and (min-width: 1201px)").matches) {
 
-        $('.gnb-area .menu-area .menu-list').hover(function(){
+        $('.gnb-area .menu-area .menu-item').hover(function(){
             if ($(this).children('.submenu-area').length == 1) {
                 $('.header').addClass('over');
                 $(this).addClass('over');
-                $(this).find('.submenu-list').first().children().addClass('active');
+                $(this).find('.submenu-item').first().children().addClass('active');
             }
         }, function(){
             $('.header').removeClass('over');
@@ -19,18 +19,34 @@ $(function(){
         $(this).addClass('active');
         }, function(){
             $('.gnb-area .submenu-area .link-submenu').removeClass('active');
-            $('.gnb-area .submenu-list:first-child .link-submenu').addClass('active');
+            $('.gnb-area .submenu-item:first-child .link-submenu').addClass('active');
         }) // 소메뉴 hover
 
         
 
         
     }
+    $('.gnb-area .ic-menu').click(function(){
+        $(this).siblings('.open-menu-wrap').removeClass('hide');
+        $('body').addClass('none-scroll');
+
+        tl = gsap.timeline({
+            default: {
+                stagger: .5,
+            }
+        })
+        tl.to('.typing',{
+            delay: .3,
+        })
+        .set('.typing', {className:"+=activemenuclass"},0) 
+        // .to('.typing',{
+        //     "display": "none",
+        //     stagger: .5,
+        // })
+
+        tl.fromTo('.ani-font i',{"display": "none"}, {"display": "block"});
+    }) // 메뉴 버튼 클릭시 메뉴 활성화 및 body 스크롤 제거
     if (matchMedia("screen and (max-width: 1023px)").matches) {
-        $('.gnb-area .ic-menu').click(function(){
-            $(this).siblings('.open-menu-wrap').removeClass('hide');
-            $('body').addClass('none-scroll');
-        }) // 메뉴 버튼 클릭시 메뉴 활성화 및 body 스크롤 제거
 
         $('.header .close-menu').click(function(e){
             e.preventDefault();
@@ -82,8 +98,8 @@ $(function(){
 
     var numArray = []; // 5개의 난수를 넣어 줄 배열 생성
     var slideArray = []; // 5개의 슬라이드를 넣어 줄 슬라이드 배열 생성
-    $('.container .sc-mainSlide .swiper-wrapper .swiper-slide').each(function(){
-        var randomSlide = Math.floor(Math.random() * 17) + 1; // 슬라이드 이미지 17개에 맞춰 1~17까지 난수 값 설정
+    $('.sc-mainSlide .swiper-slide').each(function(){
+        var randomSlide = Math.floor(Math.random() * 17) + 1; // 슬라이드 17개에 맞춰 1~17까지 난수 값 설정
         if(!numArray.includes(randomSlide)) { // 나온 난수 값이 배열 안에 없다면(중복 체크)
             numArray.push(randomSlide); // 난수 값을 난수 배열에 넣어줌
             slideArray.push($('.sc-mainSlide .swiper-slide:nth-child('+randomSlide+')').html()); // 나온 난수 값번째 슬라이드에 html을 슬라이드 배열에 넣어줌
@@ -139,8 +155,8 @@ $(function(){
 
         
 
-        var storyListClone = $('.story-area').children().clone();
-        $('.story-area').append(storyListClone);
+        // var storyitemClone = $('.story-area').children().clone();
+        // $('.story-area').append(storyitemClone);
         var storyAreaClone = $('.story-area').clone()
         storyAreaClone.addClass('dup');
         $('.slide-story').append(storyAreaClone);
@@ -150,32 +166,32 @@ $(function(){
             $(this).children().find('img').toggleClass('over');
         }) // story hover이벤트 이미지 scale
 
-        var fontListClone = $('.font-area').clone();
-        fontListClone.addClass('dup');
-        $('.slide-font').append(fontListClone);
+        var fontItemClone = $('.font-area').clone();
+        fontItemClone.addClass('dup');
+        $('.slide-font').append(fontItemClone);
         // font 슬라이드
     })
 
     $('.story-area').hover(function(){
-        setTimeout(function(){
-            $('.slide-story').addClass('pause')
-        }, 2000)
+        $('.slide-story').addClass('pause')
     }, function(){
         $('.slide-story').removeClass('pause')
     }) // story-area에 2초 hover시 애니메이션 중지
 
     $('.sc-video .video-wrap').hover(function(){
-        $(this).children('a').toggleClass('hide');
+        $(this).children('.btn-control').toggleClass('hide');
     }) // video 영역 hover이벤트 시 컨트롤러 숨김 유무
 
     $('.sc-video .video-wrap .btn-control').click(function(e){
         e.preventDefault();
-        if($(this).hasClass('pause')) {
+        if(!$(this).children('.btn-pause').hasClass('hide')) {
             $(this).siblings().get(0).pause();
-            $(this).children().text('재생');
+            $(this).children('.btn-pause').toggleClass('hide');
+            $(this).children('.btn-play').toggleClass('hide');
         } else {
             $(this).siblings().get(0).play();
-            $(this).children().text('정지');
+            $(this).children('.btn-pause').toggleClass('hide');
+            $(this).children('.btn-play').toggleClass('hide');
         }
         $(this).toggleClass('pause play');
     }) // video 컨트롤러 클릭 시 video 정지/재생 및 정지/재생버튼 변경
@@ -189,4 +205,6 @@ $(function(){
         $(this).siblings('.site-area').toggleClass('hide');
         $(this).siblings('.ic-arrow').toggleClass('down up');
     }) // footer 관련 사이트 버튼 클릭 시 hide toggle
+
+
 })
