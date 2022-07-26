@@ -43,10 +43,6 @@
     background: url(../images/ic-menu.svg) no-repeat;
     cursor: pointer;
 }
-.open-menu-wrap {
-    filter: none;
-    z-index: 100;
-}
 .open-menu-wrap .open-menu-header { 
     position: fixed;
     left: 40px; right: 45px;
@@ -106,6 +102,7 @@
     display: inline-block;
     padding: 0 15px;
     line-height: 64px;
+    white-space: nowrap;
     transition: .3s;
 }
 .gnb-area .menu-area .link-submenu.active {
@@ -344,14 +341,15 @@
         padding: 0 40px;
         background: #fff;
         overflow-y: scroll;
-        transition: .8s ease-out;
+        transition: .8s;
         z-index: 100;
     }
     .header .gnb-area .open-menu-wrap.hide {
         transform: translateX(100%);
     }
     .header .gnb-area .open-menu-header {
-        display: block;
+        display: flex;
+        justify-content: space-between;
     } 
     .gnb-area .open-menu-header .close-menu {
         display: flex;

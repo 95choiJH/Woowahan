@@ -2,20 +2,20 @@
     padding-top: 72px;
     text-align: center;
 }
-.container .sc-mainSlide { /* container 삭제 */
+.sc-mainSlide {
     padding: 0;
 }
-.container .sc-mainSlide .swiper-pagination {
+.sc-mainSlide .swiper-pagination {
     bottom: 43px;
 }
-.container .sc-mainSlide .swiper-pagination .swiper-pagination-bullet {
+.sc-mainSlide .swiper-pagination .swiper-pagination-bullet {
     opacity: 1;
     margin: 0 4px;
     border-radius: 4px;
     background-color: hsla(0,0%,100%,.5);
     transition: .3s ease-in-out;
 }
-.container .sc-mainSlide .swiper-pagination .swiper-pagination-bullet-active {
+.sc-mainSlide .swiper-pagination .swiper-pagination-bullet-active {
     width: 20px;
     background-color: #fff;
 }
@@ -39,21 +39,21 @@
 .sc-mainSlide .swiper-slide-active .link-slide.slide-more01 .img-box img {
     filter: none;
 }
-.swiper-slide-active .img-box.left img { /* sc-mainSlide 부모 써야함 */
-    animation: aniLeft 3s linear;
+.sc-mainSlide .swiper-slide-active .img-box.left img {
+    animation: aniLeft 3s linear forwards;
 }
-.swiper-slide-active .img-box.right img {
-    animation: aniRight 3s linear;
+.sc-mainSlide .swiper-slide-active .img-box.right img {
+    animation: aniRight 3s linear forwards;
 }
-.swiper-slide-active .img-box.up img {
-    animation: aniUp 3s linear;
+.sc-mainSlide .swiper-slide-active .img-box.up img {
+    animation: aniUp 3s linear forwards;
 }
-.swiper-slide-active .img-box.down img {
-    animation: aniDown 3s linear;
+.sc-mainSlide .swiper-slide-active .img-box.down img {
+    animation: aniDown 3s linear forwards;
 }
-.swiper-slide-active .img-box.small img {
+.sc-mainSlide .swiper-slide-active .img-box.small img {
     width: 884px; height: 1250px;
-    animation: aniSmall 3s linear;
+    animation: aniSmall 3s linear forwards;
 }
 .sc-mainSlide .link-slide.slide-intro04 video{
     width: 100%; height: 100%;
@@ -497,7 +497,6 @@
     }
     .sc-mainSlide .txt-box .desc {
         padding: 35px 0;
-        /* font-size: 35px; */
     }
 }
 
