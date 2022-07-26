@@ -21,37 +21,36 @@ $(function(){
             $('.gnb-area .submenu-area .link-submenu').removeClass('active');
             $('.gnb-area .submenu-item:first-child .link-submenu').addClass('active');
         }) // 소메뉴 hover
-
-        
-
-        
     }
+
     $('.gnb-area .ic-menu').click(function(){
         $(this).siblings('.open-menu-wrap').removeClass('hide');
         $('body').addClass('none-scroll');
 
-        tl = gsap.timeline({
-            default: {
-                stagger: .5,
-            }
-        })
-        tl.to('.typing',{
-            delay: .3,
-        })
-        .set('.typing', {className:"+=activemenuclass"},0) 
-        // .to('.typing',{
-        //     "display": "none",
-        //     stagger: .5,
-        // })
+        lol = gsap.timeline({duration: .1, delay: .5})
+        .to($('.lol1'), .3,{ className:"lol1" })
+        .to($('.lol2'), .3,{ className:"lol2" })
+        .to($('.lol3'), .3,{ className:"lol3" })
+        .to($('.lol3'), .3,{ className:"lol3 hide" })
+        .to($('.lol2'), .3,{ className:"lol2 hide" })
+        .to($('.lol1'), .3,{ className:"lol1 hide" })
+        .to($('.lol1'), .3,{ className:"lol1" })
+        .to($('.lol2'), .3,{ className:"lol2" })
+        .to($('.lol3'), .3,{ className:"lol3" })
+        .to($('.lol4'), .3,{ className:"lol4" })
+        .to($('.lol5'), .3,{ className:"lol5" })
 
-        tl.fromTo('.ani-font i',{"display": "none"}, {"display": "block"});
-    }) // 메뉴 버튼 클릭시 메뉴 활성화 및 body 스크롤 제거
+    })
     if (matchMedia("screen and (max-width: 1023px)").matches) {
 
         $('.header .close-menu').click(function(e){
             e.preventDefault();
             $(this).parents('.open-menu-wrap').addClass('hide');
             $('body').removeClass('none-scroll')
+            lol.kill();
+            $('.ani-lol span').each(function(){
+                $(this).addClass('hide');
+            })
         }) // 메뉴 닫기 버튼 클릭시 메뉴 영역 닫고 body 스크롤 초기화
 
         $('.gnb-area .menu-area .has-sub .link-menu').click(function(e){
@@ -112,7 +111,7 @@ $(function(){
             })
         }
     }) // 메인슬라이드 개수를 5개로 제한하며 새로고침 할 때마다 랜덤슬라이드
-
+    var isStop = false;
     function fadeText() {
         $('.swiper-slide .fade').remove(); // 초기화
         var text = $('.swiper-slide-active').find('.fiction').text(); // 현재 활성화된 슬라이드에 페이드 할 텍스트를 text 변수에 저장 
@@ -122,12 +121,20 @@ $(function(){
             $('.swiper-slide-active').find('.fade').append('<i class="fade-txt'+i+'">'+text[i]+'</i>'); // 추가한 fade안에 text변수에 저장된 글자 하나하나를 각각 클래스를 줘서 추가
         })
         var i = 0; // setinterval 반복할 횟수 i를 0으로 초기화
-        setInterval(function(){
-            if(i < text.length) { // text의 길이만큼 반복
-                $('.swiper-slide-active').find('.fade-txt'+i+'').animate({opacity: "1"}); // 각각의 글자를 2초마다 opacity 1
-                i++;
+        var ani = setInterval(function(){
+            if(!isStop) {
+                if(i < text.length) { // text의 길이만큼 반복
+                    $('.swiper-slide-active').find('.fade-txt'+i+'').animate({opacity: "1"}); // 각각의 글자를 2초마다 opacity 1
+                    i++;
+                } else {
+                    return false; // setinterval 종료
+                }
             } else {
-                return false; // setinterval 종료
+                clearInterval(ani);
+                setTimeout(function(){
+                    isStop = false;
+                    fadeText();
+                })
             }
         }, 200)
     } // 메인슬라이드 텍스트 페이드인
@@ -141,36 +148,27 @@ $(function(){
         },
         on: {
             slideChange: function(){
-                setTimeout(function(){
-                    fadeText();
-                },1)
+                isStop = true;
             }
         },
         loop: true
     }); // 메인슬라이드
     
     
-    $(document).ready(function(){
-        fadeText();
+    fadeText();
+    var storyAreaClone = $('.story-area').clone()
+    storyAreaClone.addClass('dup');
+    $('.slide-story').append(storyAreaClone);
+    // story 슬라이드
 
-        
+    $('.sc-story .link-story').hover(function(){
+        $(this).children().find('img').toggleClass('over');
+    }) // story hover이벤트 이미지 scale
 
-        // var storyitemClone = $('.story-area').children().clone();
-        // $('.story-area').append(storyitemClone);
-        var storyAreaClone = $('.story-area').clone()
-        storyAreaClone.addClass('dup');
-        $('.slide-story').append(storyAreaClone);
-        // story 슬라이드
-
-        $('.sc-story .link-story').hover(function(){
-            $(this).children().find('img').toggleClass('over');
-        }) // story hover이벤트 이미지 scale
-
-        var fontItemClone = $('.font-area').clone();
-        fontItemClone.addClass('dup');
-        $('.slide-font').append(fontItemClone);
-        // font 슬라이드
-    })
+    var fontItemClone = $('.font-area').clone();
+    fontItemClone.addClass('dup');
+    $('.slide-font').append(fontItemClone);
+    // font 슬라이드
 
     $('.story-area').hover(function(){
         $('.slide-story').addClass('pause')

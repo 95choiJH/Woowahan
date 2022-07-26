@@ -17,16 +17,16 @@ body {
 body.none-scroll {
     overflow: hidden;
 }
-.blur {
+.dimmed {
     position: fixed;
     top: 0; bottom: 0; left: 0; right: 0;
-    background: #000;
-    opacity: 0;
-    transition: .3s;
     pointer-events: none;
+    transition: .8s;
+    z-index: 9;
 }
-body.none-scroll .blur {
-    opacity:  .2;
+body.none-scroll .dimmed {
+    background-color: rgba(0,0,0,.3);
+    backdrop-filter: saturate(180%) blur(20px);
 }
 
 .swiper {

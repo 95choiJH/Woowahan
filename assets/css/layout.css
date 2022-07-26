@@ -76,6 +76,9 @@
 .gnb-area .menu-area .menu-item {
     height: 72px;
 }
+.ani-lol {
+    display: none;
+}
 .gnb-area .menu-area .link-menu {
     padding: 0 17px;
     line-height: 72px;
@@ -341,7 +344,7 @@
         padding: 0 40px;
         background: #fff;
         overflow-y: scroll;
-        transition: .3s ease-in-out;
+        transition: .8s ease-out;
         z-index: 100;
     }
     .header .gnb-area .open-menu-wrap.hide {
@@ -413,23 +416,28 @@
         padding: 0;
         line-height: 28px;
     }
-    .open-menu-wrap .menu-item .ani-font {
-        position: absolute;
-        top: 0; left: 50px;
+    .open-menu-wrap .menu-font {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .open-menu-wrap .menu-font .link-menu {
+        display: inline-block;
+    }
+    .open-menu-wrap .menu-item .ani-lol {
+        display: flex;
         font-family: 'Hanna', sans-serif;
-        font-size: 16px;
-        overflow: hidden;
-        clear: both;
+        font-weight: bold;
     }
-    .open-menu-wrap .menu-item i {
-        float: left;
-    }
-    .open-menu-wrap .menu-item i.hide {
+    .open-menu-wrap .menu-item .ani-lol span.hide {
         display: none;
+    }
+    /* .open-menu-wrap .menu-item i {
+        float: left;
     }
     .open-menu-wrap.hide .menu-item .ani-font {
         display: none;
-    }
+    } */
     .gnb-area .side-area {
         display: block;
         flex-wrap: wrap;
