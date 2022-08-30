@@ -138,10 +138,8 @@ $(function(){
                 }
             } else {
                 clearInterval(textAni);
-                setTimeout(function(){
-                    isStop = false;
-                    fadeText();
-                })
+                isStop = false;
+                fadeText();
             }
         }, 200)
     } // 메인슬라이드 텍스트 페이드인
